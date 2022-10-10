@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03afa7c2-06dd-4529-8e3d-6809966389e3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HW2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CDoublyLinkedList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Tester.java" afterDir="false" />
+    <list default="true" id="03afa7c2-06dd-4529-8e3d-6809966389e3" name="Changes" comment="Unfinished insertion sort">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CDoublyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CDoublyLinkedList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,8 +63,16 @@
       <option name="presentableId" value="Default" />
       <updated>1665168912305</updated>
       <workItem from="1665168914146" duration="10397000" />
-      <workItem from="1665434879670" duration="3115000" />
+      <workItem from="1665434879670" duration="6079000" />
     </task>
+    <task id="LOCAL-00001" summary="Unfinished insertion sort">
+      <created>1665438220825</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1665438220825</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,5 +91,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Unfinished insertion sort" />
+    <option name="LAST_COMMIT_MESSAGE" value="Unfinished insertion sort" />
   </component>
 </project>

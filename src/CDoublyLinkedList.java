@@ -1,3 +1,7 @@
+//Brendan Kendall
+//CSCD 300
+//10/10/2022
+
 public class CDoublyLinkedList {
 
 	private class Node {
@@ -36,9 +40,7 @@ public class CDoublyLinkedList {
 		this.size ++;
 	}
 
-	// write a method void addLast(Object data) that will insert 
-	// the piece of data at the end of the current list.
-	// Note: this list is allowed to store null data element in its list node.
+
 	public void addLast(Object data) {
 		Node cur = this.head.prev; //end of list
 		Node nn = new Node(data, cur, cur.next);
@@ -47,20 +49,13 @@ public class CDoublyLinkedList {
 		this.size++;
 	}
 	
-	// Write the subListOfSmallerValues method.  
-	// It should return a CDoublyLinkedList object 
-	//     containing data that is smaller than the value passed to the method.
-        // If a null data element in this list is encountered, you can skip it.
-        // You need to use the CompareTo() method to determine which object is smaller.
-        // If list A contains {9, 11, 14, 6, 4, 7} and you call  A.subListOfSmallerValues(10),
-        // the method call returns a list that contains data in A that is smaller than 10, the passed-in argument.
-        // That is, the returned list contains { 9, 6, 4, 7}.
+
 	public CDoublyLinkedList subListOfSmallerValues(Comparable data) {
 		CDoublyLinkedList subList = new CDoublyLinkedList();
 		Node cur = this.head.next;
 		while(cur != this.head) { //Traverse to end of list
 			if (cur.data != null && (data.compareTo(cur.data) > 0)) {
-				//cur.data is not null and is less than data passed in
+				//cur.data is not null and is less than the data passed in
 				subList.addLast(cur.data);
 			}
 			cur = cur.next;
@@ -68,15 +63,11 @@ public class CDoublyLinkedList {
 		return subList;
 	}
 	
-	// This method should remove the first occurrence of the data from the list, 
-        //      starting at the *BACK* of the list. 
-        // It scans the list from back to the front by following the prev links. 
-	// The method should return true if successful, false otherwise. 
-	// Note that list node may contain null data element. Please handle this edge case.
+
 	public boolean removeStartingAtBack(Object dataToRemove) {
 		Node cur = this.head.prev; //end of list
 		while (cur != this.head) {
-			if (cur.data == null && dataToRemove == null) { //edge case
+			if (cur.data == null && dataToRemove == null) { //handles edge case for null data
 				cur.prev.next = cur.next;
 				cur.next.prev = cur.prev;
 				this.size --;
@@ -93,17 +84,12 @@ public class CDoublyLinkedList {
 		return false;
 	}
 	
-	// Returns the index of the last occurrence of the specified element in this list, 
-	//     or -1 if this list does not contain the element. 
-	// More formally, returns the highest index i 
-	//     such that (o==null ? get(i)==null : o.equals(get(i))), 
-	//     or -1 if there is no such index.
-	// Note: a list node may store a null data element. Please handle this edge case.
+
 	public int lastIndexOf(Object o) {
 		Node cur = this.head.next;
 		int lastIndex = -1, currentIndex = 0;
 		while (cur != this.head) {
-			if (cur.data == null && o == null) { //edge case
+			if (cur.data == null && o == null) { //handles edge case for null data
 				lastIndex = currentIndex;
 			}
 			if (cur.data != null && cur.data.equals(o)) {
@@ -112,16 +98,10 @@ public class CDoublyLinkedList {
 			currentIndex++;
 			cur = cur.next;
 		}
-		return lastIndex; //change this as needed.
+		return lastIndex; //returns -1 if object o cannot be found in this list
 	}
 	
-	
-	// Removes from this list all of its elements that 
-	//    are NOT contained in the specified linkedlist other.
-	// If any element has been removed from this list,
-	//    returns true. Otherwise returns false.
-	// If other list is null, throws NullPointerException.
-        // Helper methods are allowed.
+
 	public boolean retainAll(CDoublyLinkedList other) throws NullPointerException {
 		if (other.isEmpty()) {
 			throw new NullPointerException("Other list is empty!");
@@ -134,31 +114,31 @@ public class CDoublyLinkedList {
 				//if the data from each node equal each other, the node from this list is kept; otherwise, it is deleted
 			boolean keepNode = false;
 			for (Node otherCur = other.head.next; otherCur != other.head; otherCur = otherCur.next) {
-				if (cur.data == null && otherCur.data == null ) {
+				if (cur.data == null && otherCur.data == null ) { //handles edge case for null data
 					keepNode = true;
 				}else if (cur.data != null && cur.data.equals(otherCur.data)) {
 					keepNode = true;
 				}
 			}
-			if (!keepNode) { //cur.data does not match any of the data in other list
-					cur.prev.next = cur.next;
-					cur.next.prev = cur.prev;
-					this.size --;
-					deletedSomething = true;
+			if (!keepNode) {
+				//cur.data does not match any of the data in other list
+				cur.prev.next = cur.next;
+				cur.next.prev = cur.prev;
+				this.size --;
+				deletedSomething = true;
 			}
 			cur = cur.next;
 		}
 	    return deletedSomething;
 	}
-	
 
-        // Write this method to sort this list using insertion sort algorithm, 
-        //      as we have learned in the classroom.
+
 	public void insertionSort() { //Does not work for lists containing null data
+		//sortedCur starts at the end of the sorted region, and unsortedCur starts at the beginning of unsorted region
 		Node sortedCur = this.head.next, unsortedCur = this.head.next.next;
 		while (unsortedCur != this.head) {
-			while ( ((Comparable) unsortedCur.data).compareTo(sortedCur.data) < 0 && sortedCur != this.head ) {
-				//Continue walking sortedCur back until sortedCur is either smaller or is the head node
+			while ( sortedCur != this.head && ((Comparable) sortedCur.data).compareTo(unsortedCur.data) > 0 ) {
+				//Continue walking sortedCur back until sortedCur is either the head node or is smaller than unsortedCur
 				sortedCur = sortedCur.prev;
 			}
 			//cut unsortedCur and insert it in front of sortedCur
@@ -172,7 +152,6 @@ public class CDoublyLinkedList {
 			unsortedCur = unsortedCur.next;
 			sortedCur = unsortedCur.prev;
 		}
-		
 	}
 	
 	@Override
